@@ -5,8 +5,9 @@ const { createApp } = require("../app");
 
 describe("logger", () => {
   it("should log req mehtod and url", (context, done) => {
+    const users = [];
     const renderer = context.mock.fn();
-    const app = createApp(renderer);
+    const app = createApp(users, renderer);
 
     request(app)
       .get("/")
@@ -19,14 +20,21 @@ describe("logger", () => {
 });
 
 describe("POST /login", () => {
-  const app = createApp(console.log);
+  const emailId = "abc@gmail.com";
+  const username = "Swagato";
+  const users = [];
+
+  const app = createApp(users, console.log);
 
   it("should add a new user and provide a session id", (_, done) => {
     request(app)
-    .post("/login")
-    .set("content-type", "application/x-www-form-urlencoded")
-    .send("usrname=Swagato")
-    .expect(200)
-    .end(done);
+      .post("/login")
+      .set("content-type", "application/x-www-form-urlencoded")
+      .send("username=Swagato&emailId=abc@gmail.com")
+      .expect(302)
+      .expect((err, res) => {
+        deepStrictEqual(users, [{ emailId, username }]);
+      })
+      .end(done);
   });
 });

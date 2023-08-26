@@ -5,9 +5,15 @@ const logger = (renderer) => {
   };
 };
 
-const registerUser = (req, res) => {
-  res.cookie("usr_session", 5);
-  res.status(200).end();
+const registerUser = (users) => {
+  return (req, res) => {
+    const { emailId, username } = req.body;
+
+    users.push({ emailId, username });
+    res.cookie("usr_session", 5);
+    res.cookie("usr_name", username);
+    res.redirect(302, "/");
+  };
 };
 
 module.exports = { logger, registerUser };
