@@ -1,0 +1,21 @@
+{
+  "name": "mindscape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint .",
+    "start": "node server.js",
+    "test": "node --test",
+    "dev": "node --watch server.js",
+    "coverage": "npx nyc node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "nyc": "^15.1.0",
+    "supertest": "^6.3.3"
+  }
+}
