@@ -1,3 +1,2 @@
-#! bin/bash
-npm init
+#! /bin/bash
 cp .git_hooks/* .git/hooks

@@ -8,7 +8,7 @@ module.exports = {
   },
 
   rules: {
-    "semi": ["warn", "always"],
+    "semi": ["error", "always"],
     "quotes": ["warn", "double"],
     "no-multiple-empty-lines": "error",
     "key-spacing": ["error", { afterColon: true }],

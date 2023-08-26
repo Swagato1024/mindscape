@@ -1,0 +1,4 @@
+#! /bin/bash
+
+echo "running lint and test coverage"
+npm run lint && npm run coverage
