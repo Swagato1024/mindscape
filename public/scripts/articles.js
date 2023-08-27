@@ -20,6 +20,7 @@ const createArticleElement = ({ title, content, author }) => {
 };
 
 const render = (articles, articlesContainer) => {
+
   const articleElements = articles.map(createArticleElement);
 
   articlesContainer.append(...articleElements);

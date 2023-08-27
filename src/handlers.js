@@ -46,10 +46,24 @@ const serveLoginPage = (req, res) => {
   res.sendFile(filepath);
 };
 
+const serveSelectedArticles = (articles) => {
+  return (req, res) => {
+    const username = req.cookies?.username;
+    if (!username) {
+      req.redirect("/login");
+      return;
+    }
+
+    const selectedArticles = articles.selecByAuthor(username);
+    res.json(selectedArticles);
+  };
+};
+
 module.exports = {
   createContent,
   serveArticles,
   getUserProfile,
   serveArticleForm,
   serveLoginPage,
+  serveSelectedArticles,
 };

@@ -1,0 +1,88 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Timeline styles */
+.timeline {
+  padding: 40px;
+}
+
+.timeline h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.article-list {
+  /* List styles here */
+}
+
+.article {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.article h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.article p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-edit,
+.btn-delete {
+  background-color: #3F51B5;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  background-color: #2C3E50;
+}
+
+.btn-post {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-post:hover {
+  background-color: #45a049;
+}
