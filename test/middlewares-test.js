@@ -40,6 +40,19 @@ describe("POST /login", () => {
 });
 
 describe("POST /logout", () => {
+  it("should redirect to login page for when user is not already logged in", (context, done) => {
+    const users = [];
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, null, renderer);
+
+    request(app)
+      .post("/logout")
+      .expect("location", "/login")
+      .expect(302)
+      .end(done);
+  });
+
   it("should log the user out and redirect to articles page", (context, done) => {
     const users = [];
     const renderer = context.mock.fn();
@@ -50,6 +63,6 @@ describe("POST /logout", () => {
       .set("cookie", "username=swagato")
       .expect(302)
       .expect("location", "/pages/articles.html")
-      .end(done)
+      .end(done);
   });
 });
