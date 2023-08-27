@@ -10,7 +10,6 @@ const registerUser = (users) => {
     const { emailId, username } = req.body;
 
     users.push({ emailId, username });
-    console.log(users);
     res.cookie("usr_name", username);
     res.redirect(302, "/");
   };

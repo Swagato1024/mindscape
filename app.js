@@ -1,7 +1,7 @@
 const express = require("express");
 const { logger, registerUser } = require("./src/middlewares");
 
-const createApp = (users, renderer) => {
+const createApp = (users, articles, renderer) => {
   const app = express();
 
   app.use(express.json());

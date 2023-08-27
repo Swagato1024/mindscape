@@ -7,7 +7,7 @@ describe("logger", () => {
   it("should log req mehtod and url", (context, done) => {
     const users = [];
     const renderer = context.mock.fn();
-    const app = createApp(users, renderer);
+    const app = createApp(users, null,  renderer);
 
     request(app)
       .get("/")
@@ -26,7 +26,7 @@ describe("POST /login", () => {
     const emailId = "abc@gmail.com";
     const username = "Swagato";
 
-    const app = createApp(users, renderer);
+    const app = createApp(users, null, renderer);
 
     request(app)
       .post("/login")
