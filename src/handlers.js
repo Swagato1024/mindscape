@@ -6,6 +6,7 @@ const createContent = (articles) => {
     }
 
     const { title, domain, content, author } = req.body;
+    console.log(title, domain, content, author);
     articles.create({ title, domain, content, author });
     res.status(201).end();
   };
@@ -31,4 +32,24 @@ const getUserProfile = (req, res) => {
   res.json({ loggedIn: true, username: cookies.username });
 };
 
-module.exports = { createContent, serveArticles, getUserProfile };
+const serveArticleForm = (req, res) => {
+  if (!isLoggedIn(req.cookies)) return res.redirect("/login");
+
+  const filepath = `${process.env.PWD}/public/pages/article-form.html`;
+  res.sendFile(filepath);
+};
+
+const serveLoginPage = (req, res) => {
+  if (isLoggedIn(req.cookies)) return res.redirect("/");
+
+  const filepath = `${process.env.PWD}/public/pages/login-form.html`;
+  res.sendFile(filepath);
+};
+
+module.exports = {
+  createContent,
+  serveArticles,
+  getUserProfile,
+  serveArticleForm,
+  serveLoginPage,
+};

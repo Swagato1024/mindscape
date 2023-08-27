@@ -1,8 +1,6 @@
 const clearForm = (...fileds) => fileds.forEach((field) => (field.value = ""));
 
 const submitForm = (reqBody) => {
- console.log("submitting reqBody");
- 
   return fetch("/article", {
     method: "POST",
     body: JSON.stringify(reqBody),

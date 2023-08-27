@@ -11,8 +11,6 @@ const registerUser = (users) => {
 
     users.push({ emailId, username });
 
-    console.log(users);
-
     res.cookie("username", username);
     res.redirect(302, "/");
   };
