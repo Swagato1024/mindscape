@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mindscape - Explore and Share Ideas</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/scripts/user-profile.js"></script>
   </head>
-
   <body>
     <header>
       <nav>
         <div class="logo">Mindscape</div>
-
-        <ul class="nav-links">
-          <li><a href="/pages/articles.html">Explore</a></li>
-          <li><a href="/pages/article-form.html">Write</a></li>
-          <li><a href="/pages/login-form.html">Login</a></li>
-        </ul>
+        <div class="nav-links">
+          <div><a href="/pages/articles.html">Explore</a></div>
+          <div><a href="/pages/article-form.html">Write</a></div>
+          <div id="profile"></div>
+        </div>
       </nav>
     </header>
 
@@ -27,25 +27,32 @@
       </div>
     </section>
 
-    <section class="featured">
-      <h2>Featured Articles</h2>
-      <div class="article-slider">
-        <div class="article-card">
-          <img src="article1.jpg" alt="Article 1" />
-          <h3>Article Title</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="article-card">
-          <img src="article2.jpg" alt="Article 2" />
-          <h3>Another Article</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        </div>
+    <section class="features">
+      <div class="feature">
+        <h2>Discover Inspiring Ideas</h2>
+        <p>
+          Explore a diverse collection of articles written by passionate
+          individuals. From technology to arts, we've got it all covered.
+        </p>
+      </div>
+      <div class="feature">
+        <h2>Share Your Expertise</h2>
+        <p>
+          Are you a writer, thinker, or creator? Publish your own articles and
+          contribute to a global community of knowledge seekers.
+        </p>
+      </div>
+      <div class="feature">
+        <h2>Connect and Engage</h2>
+        <p>
+          Connect with like-minded individuals, participate in discussions, and
+          broaden your horizons through meaningful interactions.
+        </p>
       </div>
     </section>
 
     <footer>
       <p>&copy; 2023 Mindscape. All rights reserved.</p>
     </footer>
-
   </body>
 </html>
