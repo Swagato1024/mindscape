@@ -24,3 +24,26 @@ describe("POST /article", () => {
       .end(done);
   });
 });
+
+describe("GET /articles", () => {
+  it("should serve all the aritcles", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const title = "Play pool stay cool";
+    const domain = "fitness";
+    const author = "Qasim";
+    const content = "This is the secret of my success";
+
+    articles.create({title, domain, content, author});
+    const app = createApp(users, articles, renderer);
+
+    request(app)
+      .get("/articles")
+      .expect(200)
+      .expect("content-type", /json/)
+      .expect(articles.getAll())
+      .end(done);
+  });
+});

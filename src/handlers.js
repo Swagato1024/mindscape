@@ -6,4 +6,11 @@ const createContent = (articles) => {
   };
 };
 
-module.exports = { createContent };
+const serveArticles = (articles) => {
+  return (req, res) => {
+    res.status(200);
+    res.json(articles.getAll());
+  };
+};
+
+module.exports = { createContent, serveArticles };
