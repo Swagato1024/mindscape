@@ -7,7 +7,7 @@ describe("logger", () => {
   it("should log req mehtod and url", (context, done) => {
     const users = [];
     const renderer = context.mock.fn();
-    const app = createApp(users, null,  renderer);
+    const app = createApp(users, null, renderer);
 
     request(app)
       .get("/")
@@ -30,11 +30,26 @@ describe("POST /login", () => {
 
     request(app)
       .post("/login")
-      .send({emailId, username})
+      .send({ emailId, username })
       .expect(302)
       .expect(() => {
         deepStrictEqual(users, [{ emailId, username }]);
       })
       .end(done);
+  });
+});
+
+describe("POST /logout", () => {
+  it("should log the user out and redirect to articles page", (context, done) => {
+    const users = [];
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, null, renderer);
+    request(app)
+      .post("/logout")
+      .set("cookie", "username=swagato")
+      .expect(302)
+      .expect("location", "/pages/articles.html")
+      .end(done)
   });
 });

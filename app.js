@@ -1,5 +1,5 @@
 const express = require("express");
-const { logger, registerUser, injectCookies } = require("./src/middlewares");
+const { logger, registerUser, injectCookies, logout } = require("./src/middlewares");
 const { createContent, serveArticles } = require("./src/handlers");
 
 const createApp = (users, articles, renderer) => {
@@ -13,6 +13,7 @@ const createApp = (users, articles, renderer) => {
   app.get("/articles", serveArticles(articles));
 
   app.post("/article", createContent(articles));
+  app.post("/logout", logout);
 
   app.use(express.static("./public"));
 

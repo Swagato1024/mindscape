@@ -35,5 +35,10 @@ const injectCookies = (req, res, next) => {
   next();
 };
 
+const logout = (req, res) => {
+  res.clearCookie("username");
+  res.redirect(302, "/pages/articles.html");
+};
 
-module.exports = { logger, registerUser, injectCookies};
+
+module.exports = { logger, registerUser, injectCookies, logout};
