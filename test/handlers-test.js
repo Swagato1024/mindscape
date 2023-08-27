@@ -124,8 +124,34 @@ describe("GET /login", () => {
 
     const app = createApp(users, articles, renderer);
 
+    request(app).get("/login").expect(200).end(done);
+  });
+});
+
+describe("GET /article-creation", () => {
+  it("should redirect to login page if user is not logged in", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, articles, renderer);
+
     request(app)
-      .get("/login")
+      .get("/article-creation")
+      .expect(302)
+      .end(done);
+  });
+
+  it("should serve article form for logged in user", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, articles, renderer);
+
+    request(app)
+      .get("/article-creation")
+      .set("cookie", "username=swag")
       .expect(200)
       .end(done);
   });
