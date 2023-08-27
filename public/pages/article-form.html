@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mindscape - Submit an Article</title>
-    <link rel="stylesheet" href="/styles/article-form.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/styles/article-form.css" />
+    <script src="/scripts/article-form-submit.js"></script>
+  </head>
+  <body>
     <div class="article-form-container">
-        <form class="article-form">
-            <h2>Submit an Article</h2>
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Enter the article title" required>
-            </div>
-            <div class="form-group">
-                <label for="domain">Domain</label>
-                <input type="text" id="domain" name="domain" placeholder="Enter the article domain" required>
-            </div>
-            <div class="form-group">
-                <label for="author">Author Name</label>
-                <input type="text" id="author" name="author" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="article-body">Article Body</label>
-                <textarea id="article-body" name="article-body" placeholder="Write your article here" rows="10" required></textarea>
-            </div>
-            <button type="submit" class="btn">Submit Article</button>
-        </form>
+      <form class="article-form">
+        <h2>Submit an Article</h2>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Enter the article title"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="domain">Domain</label>
+          <input
+            type="text"
+            id="domain"
+            name="domain"
+            placeholder="Enter the article domain"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="author">Author Name</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="article-body">Article Body</label>
+          <textarea
+            id="article-body"
+            name="article-body"
+            placeholder="Write your article here"
+            rows="10"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn">Submit Article</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
