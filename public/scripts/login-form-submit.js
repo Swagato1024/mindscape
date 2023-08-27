@@ -1,5 +1,5 @@
 const submitForm = (reqBody) => {
-  return fetch("/login", {
+  return fetch("/article", {
     method: "POST",
     body: JSON.stringify(reqBody),
     headers: {
