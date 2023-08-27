@@ -11,7 +11,7 @@ describe("logger", () => {
 
     request(app)
       .get("/")
-      .expect((err, res) => {
+      .expect(() => {
         strictEqual(renderer.mock.callCount(), 1);
         deepStrictEqual(renderer.mock.calls[0].arguments, ["GET", "/"]);
       })
@@ -20,19 +20,19 @@ describe("logger", () => {
 });
 
 describe("POST /login", () => {
-  const emailId = "abc@gmail.com";
-  const username = "Swagato";
-  const users = [];
+  it("should add a new user and provide a session id", (context, done) => {
+    const users = [];
+    const renderer = context.mock.fn();
+    const emailId = "abc@gmail.com";
+    const username = "Swagato";
 
-  const app = createApp(users, console.log);
+    const app = createApp(users, renderer);
 
-  it("should add a new user and provide a session id", (_, done) => {
     request(app)
       .post("/login")
-      .set("content-type", "application/x-www-form-urlencoded")
-      .send("username=Swagato&emailId=abc@gmail.com")
+      .send({emailId, username})
       .expect(302)
-      .expect((err, res) => {
+      .expect(() => {
         deepStrictEqual(users, [{ emailId, username }]);
       })
       .end(done);
