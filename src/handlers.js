@@ -18,4 +18,17 @@ const serveArticles = (articles) => {
   };
 };
 
-module.exports = { createContent, serveArticles };
+const isLoggedIn = (cookies) => "username" in cookies;
+
+const getUserProfile = (req, res) => {
+  const { cookies } = req;
+
+  if (!isLoggedIn(cookies)) {
+    res.json({ loggedIn: false });
+    return;
+  }
+
+  res.json({ loggedIn: true, username: cookies.username });
+};
+
+module.exports = { createContent, serveArticles, getUserProfile };

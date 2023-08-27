@@ -10,7 +10,10 @@ const registerUser = (users) => {
     const { emailId, username } = req.body;
 
     users.push({ emailId, username });
-    res.cookie("usr_name", username);
+
+    console.log(users);
+
+    res.cookie("username", username);
     res.redirect(302, "/");
   };
 };
@@ -36,7 +39,7 @@ const injectCookies = (req, res, next) => {
 };
 
 const logout = (req, res) => {
-  if(!req.cookies.username) {
+  if (!req.cookies.username) {
     res.redirect("/login");
     return;
   }
@@ -45,5 +48,4 @@ const logout = (req, res) => {
   res.redirect(302, "/pages/articles.html");
 };
 
-
-module.exports = { logger, registerUser, injectCookies, logout};
+module.exports = { logger, registerUser, injectCookies, logout };
