@@ -1,3 +1,18 @@
+const createSignupBtn = () => {
+  const signupBtn = document.createElement("input");
+
+  signupBtn.setAttribute("type", "button");
+  signupBtn.setAttribute("id", "signUpBtn");
+
+  signupBtn.value = "Sign up";
+  signupBtn.onclick = () => {
+    console.log("signup btn has been clicked");
+    location.pathname = "/pages/register.html";
+  };
+
+  return signupBtn;
+};
+
 const createLoginBtn = () => {
   const loginBtn = document.createElement("input");
   loginBtn.setAttribute("type", "button");
@@ -40,6 +55,7 @@ const renderForLoggedInUser = (username) => {
 
   const userContainer = createUserElement(username);
   const logoutBtn = createLogoutBtn();
+
   profileSection.append(userContainer, logoutBtn);
 };
 
@@ -48,7 +64,9 @@ const renderForNotLoggedInUser = () => {
   profileSection.innerHTML = "";
 
   const logoutBtn = createLoginBtn();
-  profileSection.append(logoutBtn);
+  const signupBtn = createSignupBtn();
+
+  profileSection.append(logoutBtn, signupBtn);
 };
 
 const renderProfile = (userProfile) => {

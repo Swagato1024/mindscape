@@ -17,6 +17,12 @@ class Articles {
     return this.#articles.filter(({ author }) => author === authorname);
   }
 
+  // edit(articleId, editedContent) {
+  //   const article = this.#articles.find(
+  //     (currAritcle) => currAritcle.articleId === articleId);
+  //   article.content = editedContent;
+  // }
+
   getAll() {
     return [...this.#articles];
   }

@@ -153,3 +153,30 @@ describe("GET /article-submission-form", () => {
       .end(done);
   });
 });
+
+describe("GET /signup", () => {
+  it("should redirect to home page if user is already logged in", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, articles, renderer);
+
+    request(app)
+      .get("/signup")
+      .set("cookie", "username=swag")
+      .expect(302)
+      .expect("location", "/")
+      .end(done);
+  });
+
+  it("should serve signup page if user is not already logged in", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, articles, renderer);
+
+    request(app).get("/signup").expect(200).end(done);
+  });
+});

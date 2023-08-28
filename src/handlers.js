@@ -46,10 +46,17 @@ const serveLoginPage = (req, res, next) => {
   next();
 };
 
+const serveSignupPage = (req, res, next) => {
+  if (isLoggedIn(req.cookies)) return res.redirect("/");
+  req.url = "/pages/register.html";
+  next();
+};
+
 module.exports = {
   createContent,
   serveArticles,
   getUserProfile,
   serveArticleForm,
   serveLoginPage,
+  serveSignupPage,
 };

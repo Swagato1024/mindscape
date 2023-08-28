@@ -6,6 +6,7 @@ const {
   getUserProfile,
   serveArticleForm,
   serveLoginPage,
+  serveSignupPage,
 } = require("./src/handlers");
 const { serveAuthorsTimeline } = require("./src/serve-authors-timeline");
 
@@ -18,6 +19,9 @@ const createApp = (users, articles, renderer) => {
 
   app.get("/login", serveLoginPage);
   app.post("/login", login(users));
+
+  app.get("/signup", serveSignupPage);
+
   app.get("/user-profile", getUserProfile);
 
   app.get("/article-submission-form", serveArticleForm);
@@ -25,6 +29,7 @@ const createApp = (users, articles, renderer) => {
   app.post("/article", createContent(articles));
 
   app.get("/timeline", serveAuthorsTimeline(articles));
+  // app.patch("/article/:articleId", editArticle);
 
   app.post("/logout", logout);
 

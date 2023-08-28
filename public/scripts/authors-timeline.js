@@ -9,8 +9,14 @@
 </div> */
 }
 
-const createLink = (href, value, className) => {
-  const link = document.createElement("a");
+const createBtn = (href, value, className) => {
+  const btn = document.createElement("input");
+  btn.setAttribute("type", "button");
+  btn.value = value;
+
+  btn.onclick = () => {};
+
+  const link = document.createElement("input");
   link.href = href;
   link.innerText = value;
   link.classList.add(className);
@@ -22,8 +28,8 @@ const createOptions = (articleId) => {
   const optionsContainer = document.createElement("div");
   optionsContainer.classList.add("options");
 
-  const editLink = createLink("timeline", "Edit", "btn-edit");
-  const deleteLink = createLink("timeline", "Delete", "btn-delete");
+  const editLink = createBtn("timeline", "Edit", "btn-edit");
+  const deleteLink = createBtn("timeline", "Delete", "btn-delete");
 
   optionsContainer.append(editLink, deleteLink);
   return optionsContainer;
