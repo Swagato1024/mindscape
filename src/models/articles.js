@@ -13,10 +13,6 @@ class Articles {
     this.#articles.push({ ...aritcleSpecifics, articleId });
   }
 
-  selectByAuthor(authorname) {
-    return this.#articles.filter(({author}) => author === authorname);
-  }
-
   getAll() {
     return [...this.#articles];
   }

@@ -14,7 +14,6 @@ const addSubmitListener = () => {
   const aritcleForm = document.querySelector(".article-form");
   const titleField = aritcleForm.querySelector("#title");
   const domainField = aritcleForm.querySelector("#domain");
-  const authorField = aritcleForm.querySelector("#author");
   const articleBody = aritcleForm.querySelector("#article-body");
 
   aritcleForm.onsubmit = (event) => {
@@ -23,12 +22,11 @@ const addSubmitListener = () => {
 
     const title = titleField.value;
     const domain = domainField.value;
-    const author = authorField.value;
     const content = articleBody.value;
 
-    clearForm(aritcleForm, titleField, domainField, authorField, articleBody);
+    clearForm(aritcleForm, titleField, domainField, articleBody);
 
-    submitForm({ title, domain, author, content })
+    submitForm({ title, domain, content })
       .then((res) => {
         location.href = "/";
       })

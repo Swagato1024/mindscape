@@ -5,8 +5,8 @@ const createContent = (articles) => {
       return;
     }
 
-    const { title, domain, content, author } = req.body;
-    console.log(title, domain, content, author);
+    const author = req.cookies.username;
+    const { title, domain, content } = req.body;
     articles.create({ title, domain, content, author });
     res.status(201).end();
   };
@@ -32,11 +32,11 @@ const getUserProfile = (req, res) => {
   res.json({ loggedIn: true, username: cookies.username });
 };
 
-const serveArticleForm = (req, res) => {
+const serveArticleForm = (req, res, next) => {
   if (!isLoggedIn(req.cookies)) return res.redirect("/login");
 
-  const filepath = `${process.env.PWD}/public/pages/article-form.html`;
-  res.sendFile(filepath);
+  req.url = "/pages/article-form.html";
+  next();
 };
 
 const serveLoginPage = (req, res, next) => {
@@ -46,24 +46,10 @@ const serveLoginPage = (req, res, next) => {
   next();
 };
 
-const serveSelectedArticles = (articles) => {
-  return (req, res) => {
-    const username = req.cookies?.username;
-    if (!username) {
-      req.redirect("/login");
-      return;
-    }
-
-    const selectedArticles = articles.selecByAuthor(username);
-    res.json(selectedArticles);
-  };
-};
-
 module.exports = {
   createContent,
   serveArticles,
   getUserProfile,
   serveArticleForm,
   serveLoginPage,
-  serveSelectedArticles,
 };
