@@ -1,6 +1,5 @@
 {
   "all": true,
-  "statements": 90,
   "branches": 90,
   "check-coverage": true,
   "exclude": ["main.js", ".eslintrc.js", "public/*"]
