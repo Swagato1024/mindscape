@@ -5,7 +5,9 @@ const createSignupBtn = () => {
   signupBtn.setAttribute("id", "signUpBtn");
 
   signupBtn.value = "Sign up";
-  signupBtn.onclick = () => {
+  signupBtn.onclick = (event) => {
+    console.log(event);
+
     console.log("signup btn has been clicked");
     location.pathname = "/pages/register.html";
   };

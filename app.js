@@ -7,12 +7,14 @@ const {
   serveArticleForm,
   serveLoginPage,
   serveSignupPage,
+  registerUser,
 } = require("./src/handlers");
 const { serveAuthorsTimeline } = require("./src/serve-authors-timeline");
 
 const createApp = (users, articles, renderer) => {
   const app = express();
 
+  app.use(express.urlencoded());
   app.use(express.json());
   app.use(logger(renderer));
   app.use(injectCookies);
@@ -21,6 +23,7 @@ const createApp = (users, articles, renderer) => {
   app.post("/login", login(users));
 
   app.get("/signup", serveSignupPage);
+  app.post("/signup", registerUser(users));
 
   app.get("/user-profile", getUserProfile);
 

@@ -52,6 +52,18 @@ const serveSignupPage = (req, res, next) => {
   next();
 };
 
+const registerUser = (users) => {
+  return (req, res) => {
+    if (isLoggedIn(req.cookies)) return res.redirect("/");
+
+    const { emailId, username, password } = req.body;
+    users.push({ emailId, username, password });
+
+    res.cookie("username", username);
+    res.status(201).end();
+  };
+};
+
 module.exports = {
   createContent,
   serveArticles,
@@ -59,4 +71,5 @@ module.exports = {
   serveArticleForm,
   serveLoginPage,
   serveSignupPage,
+  registerUser,
 };

@@ -180,3 +180,22 @@ describe("GET /signup", () => {
     request(app).get("/signup").expect(200).end(done);
   });
 });
+
+describe("POST /signup", () => {
+  it("should register user profile", (context, done) => {
+    const emailId = "abc@gmail.com";
+    const username = "Swagato";
+    const password = "1234";
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
+
+    const app = createApp(users, articles, renderer);
+
+    request(app)
+      .post("/signup")
+      .send({ username, emailId, password })
+      .expect(201)
+      .end(done);
+  });
+});

@@ -5,14 +5,30 @@ const logger = (renderer) => {
   };
 };
 
+const isPasswordMatched = (users, usrnameToFind, password) => {
+  const currentUser = users.find(({ username }) => username === usrnameToFind);
+  return currentUser.password === password;
+};
+
 const login = (users) => {
   return (req, res) => {
-    const { emailId, username } = req.body;
+    const { username: currentuser, password } = req.body;
 
-    users.push({ emailId, username });
+    const isValidUser = users.some(({ username }) => username === currentuser);
+    let isCorrectPassword = false;
 
-    res.cookie("username", username);
-    res.redirect(302, "/");
+    if (isValidUser) {
+      isCorrectPassword = isPasswordMatched(users, currentuser, password);
+    }
+
+    if (isValidUser && isCorrectPassword) {
+      res.cookie("username", currentuser);
+      res.status(200).send({ isValidUser, isCorrectPassword, location: "/" });
+      return;
+    }
+
+    res.status(400);
+    res.json({ isValidUser, isCorrectPassword });
   };
 };
 

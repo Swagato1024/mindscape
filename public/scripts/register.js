@@ -1,5 +1,5 @@
 const submitForm = (reqBody) => {
-  return fetch("/login", {
+  return fetch("/signup", {
     method: "POST",
     body: JSON.stringify(reqBody),
     headers: {
@@ -9,9 +9,10 @@ const submitForm = (reqBody) => {
 };
 
 const addSubmitListener = () => {
-  const signupForm = document.querySelector(".login-form");
+  const signupForm = document.querySelector(".signup-form");
   const emailSection = signupForm.querySelector("#email");
-  const usernameSection = signupForm.querySelector("#username");
+  const usernameSection = signupForm.querySelector("#name");
+  const passwordField = signupForm.querySelector("#password");
 
   signupForm.onsubmit = (event) => {
     console.log(event);
@@ -20,14 +21,16 @@ const addSubmitListener = () => {
 
     const emailId = emailSection.value;
     const username = usernameSection.value;
+    const password = passwordField.value;
 
     emailSection.value = "";
-    username.value = "";
+    usernameSection.value = "";
+    passwordField.value = "";
 
-    submitForm({ emailId, username })
+    submitForm({ emailId, username, password })
       .then((res) => {
-        if (res.redirected) {
-          location.href = res.url;
+        if (res.ok) {
+          location.href = "/";
         }
       })
 
