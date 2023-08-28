@@ -5,7 +5,7 @@ const logger = (renderer) => {
   };
 };
 
-const registerUser = (users) => {
+const login = (users) => {
   return (req, res) => {
     const { emailId, username } = req.body;
 
@@ -46,4 +46,4 @@ const logout = (req, res) => {
   res.redirect(302, "/pages/articles.html");
 };
 
-module.exports = { logger, registerUser, injectCookies, logout };
+module.exports = { logger, login, injectCookies, logout };

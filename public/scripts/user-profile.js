@@ -5,7 +5,9 @@ const createLoginBtn = () => {
 
   loginBtn.value = "Login";
   loginBtn.onclick = () => {
-    location.pathname = "/pages/login-form.html";
+    console.log("login btn has been clicked");
+
+    location.pathname = "/pages/login.html";
   };
 
   return loginBtn;

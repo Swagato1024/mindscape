@@ -1,10 +1,5 @@
 const express = require("express");
-const {
-  logger,
-  registerUser,
-  injectCookies,
-  logout,
-} = require("./src/middlewares");
+const { logger, login, injectCookies, logout } = require("./src/middlewares");
 const {
   createContent,
   serveArticles,
@@ -19,14 +14,15 @@ const createApp = (users, articles, renderer) => {
   app.use(express.json());
   app.use(logger(renderer));
   app.use(injectCookies);
+
   app.get("/login", serveLoginPage);
-  app.post("/login", registerUser(users));
+  app.post("/login", login(users));
   app.get("/user-profile", getUserProfile);
 
-  app.get("/article-creation", serveArticleForm);
+  app.get("/article-submission-form", serveArticleForm);
   app.get("/articles", serveArticles(articles));
-
   app.post("/article", createContent(articles));
+  
   app.post("/logout", logout);
 
   app.use(express.static("./public"));

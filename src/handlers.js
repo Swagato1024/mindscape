@@ -39,11 +39,11 @@ const serveArticleForm = (req, res) => {
   res.sendFile(filepath);
 };
 
-const serveLoginPage = (req, res) => {
+const serveLoginPage = (req, res, next) => {
   if (isLoggedIn(req.cookies)) return res.redirect("/");
 
-  const filepath = `${process.env.PWD}/public/pages/login-form.html`;
-  res.sendFile(filepath);
+  req.url = "/pages/login.html";
+  next();
 };
 
 const serveSelectedArticles = (articles) => {
