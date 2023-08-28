@@ -1,6 +1,8 @@
 const clearForm = (...fileds) => fileds.forEach((field) => (field.value = ""));
 
 const submitForm = (reqBody) => {
+  console.log("submitting form");
+
   return fetch("/article", {
     method: "POST",
     body: JSON.stringify(reqBody),
@@ -28,6 +30,7 @@ const addSubmitListener = () => {
 
     submitForm({ title, domain, content })
       .then((res) => {
+        console.log("redirecting to home");
         location.href = "/";
       })
 

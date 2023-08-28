@@ -7,6 +7,7 @@ const {
   serveArticleForm,
   serveLoginPage,
 } = require("./src/handlers");
+const { serveAuthorsTimeline } = require("./src/serve-authors-timeline");
 
 const createApp = (users, articles, renderer) => {
   const app = express();
@@ -22,7 +23,9 @@ const createApp = (users, articles, renderer) => {
   app.get("/article-submission-form", serveArticleForm);
   app.get("/articles", serveArticles(articles));
   app.post("/article", createContent(articles));
-  
+
+  app.get("/timeline", serveAuthorsTimeline(articles));
+
   app.post("/logout", logout);
 
   app.use(express.static("./public"));
