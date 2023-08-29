@@ -2,6 +2,7 @@ const request = require("supertest");
 const { describe, it } = require("node:test");
 const { createApp } = require("../app");
 const Articles = require("../src/models/articles");
+const { strictEqual } = require("assert");
 
 describe("POST /article", () => {
   it("should redirect unauthenticated authors to Login Page", (context, done) => {
@@ -189,12 +190,20 @@ describe("POST /signup", () => {
     const users = [];
     const articles = new Articles();
     const renderer = context.mock.fn();
+    const writeFile = context.mock.fn();
+    const existsSync = context.mock.fn();
 
-    const app = createApp(users, articles, renderer);
+    const fs = { writeFile, existsSync };
+
+    const app = createApp(users, articles, renderer, fs);
 
     request(app)
       .post("/signup")
       .send({ username, emailId, password })
+      .expect(() => {
+        strictEqual(writeFile.mock.callCount(), 1);
+        strictEqual(existsSync.mock.callCount(), 1);
+      })
       .expect(201)
       .end(done);
   });
