@@ -21,7 +21,7 @@ describe("GET /login", () => {
       .end(done);
   });
 
-  it("should redirect to page if user is not already logged in", (context, done) => {
+  it("should serve login page to logged in user", (context, done) => {
     const users = [];
     const articles = new Articles();
     const renderer = context.mock.fn();
@@ -138,7 +138,7 @@ describe("POST /logout", () => {
       .end(done);
   });
 
-  it("should log the user out and redirect to articles page", (context, done) => {
+  it("should log the user out and redirect to home page", (context, done) => {
     const users = [];
     const renderer = context.mock.fn();
 

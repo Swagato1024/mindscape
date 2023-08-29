@@ -25,6 +25,7 @@ const createApp = (users, articles, renderer, fs) => {
   app.get("/signup", serveSignupPage);
   app.post("/signup", registerUser(users, fs));
 
+  //rename route: login-status
   app.get("/user-profile", getUserProfile);
 
   app.get("/article-submission-form", serveArticleForm);

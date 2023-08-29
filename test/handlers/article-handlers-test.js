@@ -26,7 +26,7 @@ describe("POST /article", () => {
 });
 
 describe("POST /article", () => {
-  it("should post a new article from an authenticated author", (context, done) => {
+  it("should publish a new article from an authenticated author", (context, done) => {
     const users = [];
     const articles = new Articles();
     const renderer = context.mock.fn();
@@ -79,7 +79,7 @@ describe("GET /articles", () => {
 });
 
 describe("GET /user-profile", () => {
-  it("should get logged in status as true and username when user is logged in", (context, done) => {
+  it("should get logged in status of an user", (context, done) => {
     const users = [];
     const articles = new Articles();
     const renderer = context.mock.fn();
@@ -135,4 +135,13 @@ describe("GET /article-submission-form", () => {
   });
 });
 
+describe("GET /timeline", () => {
+  it("should serve the articles timeline of logged in user", (context, done) => {
+    const users = [];
+    const articles = new Articles();
+    const renderer = context.mock.fn();
 
+    const app = createApp(users, articles, renderer, null);
+    request(app).get("/timeline").expect(200).expect([]).end(done);
+  });
+});
