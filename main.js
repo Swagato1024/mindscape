@@ -7,7 +7,7 @@ const PORT = 8000;
 const main = () => {
   const { users, articles } = load();
   const app = createApp(users, articles, console.log, fs);
-  app.listen(PORT, () => console.log("listening on PORT"));
+  app.listen(PORT, () => console.log("listening on", PORT));
 };
 
 main();

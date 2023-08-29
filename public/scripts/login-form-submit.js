@@ -23,7 +23,6 @@ const handleInvalidLogin = (res, usernameField, passwordField) => {
 
 const addSubmitListener = () => {
   const loginForm = document.querySelector(".login-form");
-  const emailSection = loginForm.querySelector("#email");
   const usernameSection = loginForm.querySelector("#username");
   const passwordField = loginForm.querySelector("#password");
 
@@ -32,15 +31,13 @@ const addSubmitListener = () => {
 
     event.preventDefault();
 
-    const emailId = emailSection.value;
     const username = usernameSection.value;
     const password = passwordField.value;
 
-    emailSection.value = "";
     usernameSection.value = "";
     passwordField.value = "";
 
-    submitForm({ emailId, username, password })
+    submitForm({  username, password })
       .then((res) => res.json())
       .then((body) => {
         const { isCorrectPassword, isValidUser } = body;
