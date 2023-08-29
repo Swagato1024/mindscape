@@ -5,33 +5,6 @@ const logger = (renderer) => {
   };
 };
 
-const isPasswordMatched = (users, usrnameToFind, password) => {
-  const currentUser = users.find(({ username }) => username === usrnameToFind);
-  return currentUser.password === password;
-};
-
-const login = (users) => {
-  return (req, res) => {
-    const { username: currentuser, password } = req.body;
-
-    const isValidUser = users.some(({ username }) => username === currentuser);
-    let isCorrectPassword = false;
-
-    if (isValidUser) {
-      isCorrectPassword = isPasswordMatched(users, currentuser, password);
-    }
-
-    if (isValidUser && isCorrectPassword) {
-      res.cookie("username", currentuser);
-      res.status(200).send({ isValidUser, isCorrectPassword, location: "/" });
-      return;
-    }
-
-    res.status(400);
-    res.json({ isValidUser, isCorrectPassword });
-  };
-};
-
 const parseCookies = (cookiesString) => {
   const cookies = {};
 
@@ -62,4 +35,4 @@ const logout = (req, res) => {
   res.redirect(302, "/pages/articles.html");
 };
 
-module.exports = { logger, login, injectCookies, logout };
+module.exports = { logger, injectCookies, logout };

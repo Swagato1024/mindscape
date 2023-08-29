@@ -110,8 +110,6 @@ describe("GET /user-profile", () => {
   });
 });
 
-
-
 describe("GET /article-submission-form", () => {
   it("should redirect to login page if user is not logged in", (context, done) => {
     const users = [];
@@ -138,58 +136,4 @@ describe("GET /article-submission-form", () => {
   });
 });
 
-describe("GET /signup", () => {
-  it("should redirect to home page if user is already logged in", (context, done) => {
-    const users = [];
-    const articles = new Articles();
-    const renderer = context.mock.fn();
 
-    const app = createApp(users, articles, renderer);
-
-    request(app)
-      .get("/signup")
-      .set("cookie", "username=swag")
-      .expect(302)
-      .expect("location", "/")
-      .end(done);
-  });
-
-  it("should serve signup page if user is not already logged in", (context, done) => {
-    const users = [];
-    const articles = new Articles();
-    const renderer = context.mock.fn();
-
-    const app = createApp(users, articles, renderer);
-
-    request(app).get("/signup").expect(200).end(done);
-  });
-});
-
-describe("POST /signup", () => {
-  it("should register user profile", (context, done) => {
-    const emailId = "abc@gmail.com";
-    const username = "Swagato";
-    const password = "1234";
-    const users = [];
-    const articles = new Articles();
-    const renderer = context.mock.fn();
-    const writeFile = context.mock.fn((a, b, cb) => {
-      cb();
-    });
-    const existsSync = context.mock.fn();
-
-    const fs = { writeFile, existsSync };
-
-    const app = createApp(users, articles, renderer, fs);
-
-    request(app)
-      .post("/signup")
-      .send({ username, emailId, password })
-      .expect(() => {
-        strictEqual(writeFile.mock.callCount(), 1);
-        strictEqual(existsSync.mock.callCount(), 1);
-      })
-      .expect(201)
-      .end(done);
-  });
-});

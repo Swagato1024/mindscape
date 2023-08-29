@@ -46,35 +46,9 @@ const serveArticleForm = (req, res, next) => {
   next();
 };
 
-
-
-const serveSignupPage = (req, res, next) => {
-  if (isLoggedIn(req.cookies)) return res.redirect("/");
-  req.url = "/pages/register.html";
-  next();
-};
-
-const registerUser = (users, fs) => {
-  return (req, res) => {
-    if (isLoggedIn(req.cookies)) return res.redirect("/");
-
-    const { emailId, username, password } = req.body;
-    users.push({ emailId, username, password });
-
-    console.log(fs.existsSync("./storage/users.json"));
-
-    fs.writeFile("./storage/users.json", JSON.stringify(users), () => {
-      res.cookie("username", username);
-      res.status(201).end();
-    });
-  };
-};
-
 module.exports = {
   createContent,
   serveArticles,
   getUserProfile,
   serveArticleForm,
-  serveSignupPage,
-  registerUser,
 };

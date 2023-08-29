@@ -19,42 +19,6 @@ describe("logger", () => {
   });
 });
 
-describe("POST /login", () => {
-  it("should add a new user and provide a session id", (context, done) => {
-    const emailId = "abc@gmail.com";
-    const username = "Swagato";
-    const password = "1234";
-    const users = [{ username, emailId, password }];
-
-    const renderer = context.mock.fn();
-
-    const app = createApp(users, null, renderer);
-
-    request(app)
-      .post("/login")
-      .send({ emailId, username, password })
-      .expect(200)
-      .end(done);
-  });
-
-  it("should send error status code when username or password does not match", (context, done) => {
-    const emailId = "abc@gmail.com";
-    const username = "Swagato";
-    const password = "1234";
-    const users = [{ username, emailId, password }];
-
-    const renderer = context.mock.fn();
-
-    const app = createApp(users, null, renderer);
-
-    request(app)
-      .post("/login")
-      .send({ emailId, username, password: "125" })
-      .expect(400)
-      .end(done);
-  });
-});
-
 describe("POST /logout", () => {
   it("should redirect to login page for when user is not already logged in", (context, done) => {
     const users = [];
