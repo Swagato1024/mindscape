@@ -1,31 +1,19 @@
 const createSignupBtn = () => {
-  const signupBtn = document.createElement("input");
-
-  signupBtn.setAttribute("type", "button");
+  const signupBtn = document.createElement("a");
   signupBtn.setAttribute("id", "signUpBtn");
 
-  signupBtn.value = "Sign up";
-  signupBtn.onclick = (event) => {
-    console.log(event);
-
-    console.log("signup btn has been clicked");
-    location.pathname = "/pages/register.html";
-  };
+  signupBtn.innerText = "Sign up";
+  signupBtn.href = "/signup";
 
   return signupBtn;
 };
 
 const createLoginBtn = () => {
-  const loginBtn = document.createElement("input");
-  loginBtn.setAttribute("type", "button");
+  const loginBtn = document.createElement("a");
   loginBtn.setAttribute("id", "loginBtn");
 
-  loginBtn.value = "Login";
-  loginBtn.onclick = () => {
-    console.log("login btn has been clicked");
-
-    location.pathname = "/pages/login.html";
-  };
+  loginBtn.innerText = "Login";
+  loginBtn.href = "/login";
 
   return loginBtn;
 };
