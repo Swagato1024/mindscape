@@ -1,10 +1,8 @@
-/* Reset some default browser styles */
 body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
 
-/* Global styles */
 body {
   font-family: Arial, sans-serif;
   color: #333;
@@ -24,10 +22,6 @@ body {
 .timeline h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-.article-list {
-  /* List styles here */
 }
 
 .article {

@@ -1,10 +1,8 @@
-/* Reset some default browser styles */
 body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
 
-/* Global styles */
 body {
   font-family: Arial, sans-serif;
   color: #333;
@@ -17,7 +15,6 @@ body {
   padding: 0 20px;
 }
 
-/* Header styles */
 .header {
   background-color: #f8f8f8;
   padding: 20px 0;
@@ -57,7 +54,6 @@ body {
 }
 
 
-/* Featured articles section styles */
 .featured-articles {
   background-color: #f8f8f8;
   padding: 40px 0;
@@ -94,7 +90,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Footer styles */
 .footer {
   background-color: #f8f8f8;
   text-align: center;

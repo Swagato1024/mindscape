@@ -1,21 +1,4 @@
-{
-  /* <div class="article">
-<h2>Article Title</h2>
-<p>Article Content...</p>
-<div class="options">
-    <a href="#" class="btn-edit">Edit</a>
-    <a href="#" class="btn-delete">Delete</a>
-</div>
-</div> */
-}
-
 const createBtn = (href, value, className) => {
-  const btn = document.createElement("input");
-  btn.setAttribute("type", "button");
-  btn.value = value;
-
-  btn.onclick = () => {};
-
   const link = document.createElement("a");
   link.href = href;
   link.innerText = value;

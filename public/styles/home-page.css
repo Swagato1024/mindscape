@@ -3,7 +3,6 @@
   padding: 0;
 }
 
-/* Global styles */
 body {
   font-family: Arial, sans-serif;
   color: #333;
@@ -28,7 +27,6 @@ body {
   color: #333;
 }
 
-/* Intro section styles */
 .intro {
   background-color: #3f51b5;
   color: white;
@@ -46,7 +44,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Features section styles */
 .features {
   padding: 60px 0;
   text-align: center;
@@ -73,7 +70,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Footer styles */
 footer {
   background-color: #f8f8f8;
   text-align: center;
@@ -83,7 +79,6 @@ footer {
   color: #777;
 }
 
-/* Redesigned "Get Started" button */
 .btn {
   display: inline-block;
   background-color: #3f51b5;
@@ -137,7 +132,7 @@ footer {
 #loginBtn,
 #signUpBtn,
 #logoutBtn {
-  background-color: #2196f3; /* Blue color */
+  background-color: #2196f3; 
   color: white;
   padding: 8px 16px;
   border: none;
@@ -151,7 +146,7 @@ footer {
 #logoutBtn:hover,
 #loginBtn:hover,
 #signUpBtn:hover {
-  background-color: #1976d2; /* Darker shade on hover */
+  background-color: #1976d2; 
 }
 
 #username {
@@ -161,7 +156,7 @@ footer {
 
 header {
   background-color: white;
-  color: #333; /* Text color for contrast */
+  color: #333; 
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -180,11 +175,11 @@ header {
 
 .nav-links a {
   text-decoration: none;
-  color: #3f51b5; /* Use your primary color */
+  color: #3f51b5; 
   font-weight: bold;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: #e91e63; /* Use your accent color */
+  color: #e91e63; 
 }
