@@ -56,4 +56,20 @@ const login = (users) => {
   };
 };
 
-module.exports = { serveLoginPage, serveSignupPage, registerUser, login };
+const logout = (req, res) => {
+  if (!req.cookies.username) {
+    res.redirect("/login");
+    return;
+  }
+
+  res.clearCookie("username");
+  res.redirect(302, "/");
+};
+
+module.exports = {
+  serveLoginPage,
+  serveSignupPage,
+  registerUser,
+  login,
+  logout,
+};

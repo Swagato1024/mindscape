@@ -1,5 +1,5 @@
 const express = require("express");
-const { logger, injectCookies, logout } = require("./src/middlewares");
+const { logger, injectCookies } = require("./src/middlewares");
 const {
   createContent,
   serveArticles,
@@ -7,7 +7,7 @@ const {
   serveArticleForm,
 } = require("./src/handlers");
 const { serveAuthorsTimeline } = require("./src/serve-authors-timeline");
-const { serveLoginPage, serveSignupPage, registerUser, login } = require("./src/auth-handlers");
+const { serveLoginPage, serveSignupPage, registerUser, login, logout } = require("./src/auth-handlers");
 
 const createApp = (users, articles, renderer, fs) => {
   const app = express();

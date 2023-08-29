@@ -25,14 +25,4 @@ const injectCookies = (req, res, next) => {
   next();
 };
 
-const logout = (req, res) => {
-  if (!req.cookies.username) {
-    res.redirect("/login");
-    return;
-  }
-
-  res.clearCookie("username");
-  res.redirect(302, "/pages/articles.html");
-};
-
-module.exports = { logger, injectCookies, logout };
+module.exports = { logger, injectCookies };
