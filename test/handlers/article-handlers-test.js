@@ -1,7 +1,7 @@
 const request = require("supertest");
 const { describe, it } = require("node:test");
-const { createApp } = require("../app");
-const Articles = require("../src/models/articles");
+const { createApp } = require("../../app");
+const Articles = require("../../src/models/articles");
 
 describe("POST /article", () => {
   it("should redirect unauthenticated authors to Login Page", (context, done) => {

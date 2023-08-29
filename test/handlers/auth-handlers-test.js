@@ -2,8 +2,8 @@ const request = require("supertest");
 const { describe, it } = require("node:test");
 const { strictEqual } = require("assert");
 
-const { createApp } = require("../app");
-const Articles = require("../src/models/articles");
+const { createApp } = require("../../app");
+const Articles = require("../../src/models/articles");
 
 describe("GET /login", () => {
   it("should redirect to home page if user is already logged in", (context, done) => {

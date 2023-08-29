@@ -46,9 +46,19 @@ const serveArticleForm = (req, res, next) => {
   next();
 };
 
+const serveAuthorsTimeline = (articles) => {
+  return (req, res) => {
+    const { username: author } = req.cookies;
+    const authorsTimeLine = articles.selectByAuthor(author);
+
+    res.json(authorsTimeLine);
+  };
+};
+
 module.exports = {
   createContent,
   serveArticles,
   getUserProfile,
   serveArticleForm,
+  serveAuthorsTimeline
 };
