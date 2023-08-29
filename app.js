@@ -5,11 +5,11 @@ const {
   serveArticles,
   getUserProfile,
   serveArticleForm,
-  serveLoginPage,
   serveSignupPage,
   registerUser,
 } = require("./src/handlers");
 const { serveAuthorsTimeline } = require("./src/serve-authors-timeline");
+const { serveLoginPage } = require("./src/auth-handlers");
 
 const createApp = (users, articles, renderer, fs) => {
   const app = express();

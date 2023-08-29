@@ -110,32 +110,7 @@ describe("GET /user-profile", () => {
   });
 });
 
-describe("GET /login", () => {
-  it("should redirect to home page if user is already logged in", (context, done) => {
-    const users = [];
-    const articles = new Articles();
-    const renderer = context.mock.fn();
 
-    const app = createApp(users, articles, renderer);
-
-    request(app)
-      .get("/login")
-      .set("cookie", "username=swag")
-      .expect(302)
-      .expect("location", "/")
-      .end(done);
-  });
-
-  it("should redirect to page if user is not already logged in", (context, done) => {
-    const users = [];
-    const articles = new Articles();
-    const renderer = context.mock.fn();
-
-    const app = createApp(users, articles, renderer);
-
-    request(app).get("/login").expect(200).end(done);
-  });
-});
 
 describe("GET /article-submission-form", () => {
   it("should redirect to login page if user is not logged in", (context, done) => {
