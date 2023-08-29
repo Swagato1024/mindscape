@@ -29,10 +29,9 @@ const createApp = (users, articles, renderer, fs) => {
 
   app.get("/article-submission-form", serveArticleForm);
   app.get("/articles", serveArticles(articles));
-  app.post("/article", createContent(articles));
+  app.post("/article", createContent(articles, fs));
 
   app.get("/timeline", serveAuthorsTimeline(articles));
-  // app.patch("/article/:articleId", editArticle);
 
   app.post("/logout", logout);
 

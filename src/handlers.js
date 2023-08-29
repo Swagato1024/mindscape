@@ -1,4 +1,4 @@
-const createContent = (articles) => {
+const createContent = (articles, fs) => {
   return (req, res) => {
     if (!req.cookies.username) {
       res.redirect(302, "/login");
@@ -8,7 +8,14 @@ const createContent = (articles) => {
     const author = req.cookies.username;
     const { title, domain, content } = req.body;
     articles.create({ title, domain, content, author });
-    res.status(201).end();
+
+    fs.writeFile(
+      "./storage/articles.json",
+      JSON.stringify(articles.getAll()),
+      (err) => {
+        res.status(201).end();
+      }
+    );
   };
 };
 
@@ -61,10 +68,10 @@ const registerUser = (users, fs) => {
 
     console.log(fs.existsSync("./storage/users.json"));
 
-    fs.writeFile("./storage/users.json", JSON.stringify(users));
-
-    res.cookie("username", username);
-    res.status(201).end();
+    fs.writeFile("./storage/users.json", JSON.stringify(users), () => {
+      res.cookie("username", username);
+      res.status(201).end();
+    });
   };
 };
 

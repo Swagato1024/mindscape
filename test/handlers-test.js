@@ -37,7 +37,15 @@ describe("POST /article", () => {
     const author = "Qasim";
     const content = "This is the secret of my success";
 
-    const app = createApp(users, articles, renderer);
+    const writeFile = context.mock.fn((a, b, cb) => {
+      cb();
+    });
+
+    const existsSync = context.mock.fn();
+
+    const fs = { writeFile, existsSync };
+
+    const app = createApp(users, articles, renderer, fs);
     request(app)
       .post("/article")
       .set("cookie", "username=Swag")
@@ -190,7 +198,9 @@ describe("POST /signup", () => {
     const users = [];
     const articles = new Articles();
     const renderer = context.mock.fn();
-    const writeFile = context.mock.fn();
+    const writeFile = context.mock.fn((a, b, cb) => {
+      cb();
+    });
     const existsSync = context.mock.fn();
 
     const fs = { writeFile, existsSync };

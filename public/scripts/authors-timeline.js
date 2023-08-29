@@ -16,7 +16,7 @@ const createBtn = (href, value, className) => {
 
   btn.onclick = () => {};
 
-  const link = document.createElement("input");
+  const link = document.createElement("a");
   link.href = href;
   link.innerText = value;
   link.classList.add(className);
@@ -28,8 +28,8 @@ const createOptions = (articleId) => {
   const optionsContainer = document.createElement("div");
   optionsContainer.classList.add("options");
 
-  const editLink = createBtn("timeline", "Edit", "btn-edit");
-  const deleteLink = createBtn("timeline", "Delete", "btn-delete");
+  const editLink = createBtn("#", "Edit", "btn-edit");
+  const deleteLink = createBtn("#", "Delete", "btn-delete");
 
   optionsContainer.append(editLink, deleteLink);
   return optionsContainer;
