@@ -7,6 +7,8 @@ const main = () => {
   const app = createApp(users, articles, console.log, fs);
 
   const PORT = process.env.PORT || 8000;
+
+  //deployment purpose
   console.log(process.env.TEST);
 
   app.listen(PORT, () => console.log("listening on", PORT));
